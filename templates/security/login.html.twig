@@ -13,21 +13,22 @@
             You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
         </div>
     {% endif %}
-
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+<div style="text-align: center; margin-top:15%;">
+    <h1 class="h3 mb-3 font-weight-normal">Veuillez vous connecter</h1>
+    <label for="inputEmail">E-mail :</label>
+    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus style="width:25%;margin:auto;">
+    <label for="inputPassword">Mot de passe :</label>
+    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required style="width:25%;margin:auto;">
 
     <input type="hidden" name="_csrf_token"
            value="{{ csrf_token('authenticate') }}"
     >
 
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
+       <button class="btn btn-lg btn-primary" type="submit">
+        Connexion
     </button>
-
-     <p>Vous n'avez pas de compte ? Cliquez<a href="{{path('app_register')}}" style="text-decoration:none; color:white;"> ici</a> !</p>
 </form>
+     <p>Vous n'avez pas de compte ? Cliquez<a href="{{path('app_register')}}" style="text-decoration:none; color:white;"> ici</a> !</p>
+<a href="{{path('app_forgot_password_request') }}">Mot de passe oublié</a>.
+</div>
 {% endblock %}

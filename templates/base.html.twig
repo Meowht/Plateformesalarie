@@ -21,34 +21,37 @@
 	</head>
 	<body>
 
-<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="{{path('app_home')}}">Plateforme</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarColor01">
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a class="nav-link active" href="{{path('app_home')}}">Page d'accueil
-            <span class="visually-hidden">(current)</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{path('app_login')}}">Connexion</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{path('app_logout')}}">Deconnexion</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
-        </li>
-        
-      </ul>
-  
-    </div>
-  </div>
-</nav>
+		<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="{{path('app_home')}}">Plateforme</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarColor01">
+					<ul class="navbar-nav me-auto">
+						<li class="nav-item">
+							<a class="nav-link active" href="{{path('app_home')}}">Page d'accueil
+								<span class="visually-hidden">(current)</span>
+							</a>
+						</li>
+						{% if app.user %}
+							<li class="nav-item">
+								<a class="nav-link" href="{{path('app_logout')}}">Deconnexion</a>
+							</li>
+						{% else %}
+							<li class="nav-item">
+								<a class="nav-link" href="{{path('app_login')}}">Connexion</a>
+							</li>
+						{% endif %}
+						<li class="nav-item">
+							<a class="nav-link" href="#">Demander une date de congé</a>
+						</li>
+
+					</ul>
+
+				</div>
+			</div>
+		</nav>
 
 		{% block body %}{% endblock %}
 	</body>
