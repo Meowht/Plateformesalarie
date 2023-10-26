@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BookingNewController!{% endblock %}
+
+{% block body %}
+
+
+<div class="form-section">
+        {{ form_start(form) }}
+        {{ form_row(form.begin_at) }}
+        {{ form_row(form.end_at) }}
+        {{ form_row(form.title) }}
+        {{ form_end(form) }}
+    </div>
+
+
+
+
+
+<button type="submit" class="btn btn-primary"><a href="{{path('app_booking')}}"  style="text-decoration:none;">Valider</a></button>
+</div>
+
+
+
+{% endblock %}
+
+{% block javascript %}
+
+{% endblock %}

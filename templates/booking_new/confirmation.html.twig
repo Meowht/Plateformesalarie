@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BookingNewController!{% endblock %}
+
+{% block body %}
+{{ form.vars.value.beginAt }}<br>
+{{ form.vars.value.endAt }}<br>
+{{ form.vars.value.title }}<br>
+{% endblock %}
+
+{% block javascript %}
+<script>
+var event = {
+    title: newBooking.title,
+    start: newBooking.beginAt,
+    end: newBooking.endAt
+};
+calendar.addEvent(event);
+</script>
+{% endblock %}
