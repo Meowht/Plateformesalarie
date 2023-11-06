@@ -42,33 +42,68 @@ class CalendarSubscriber implements EventSubscriberInterface
         ;
 
         foreach ($bookings as $booking) {
-            // this create the events with your data (here booking data) to fill calendar
+            // Create the events with your data (here booking data) to fill the calendar
             $bookingEvent = new Event(
                 $booking->getTitle(),
                 $booking->getBeginAt(),
-                $booking->getEndAt() // If the end date is null or not defined, a all day event is created.
+                $booking->getEndAt() // If the end date is null or not defined, an all-day event is created.
             );
 
             /*
              * Add custom options to events
              *
-             * For more information see: https://fullcalendar.io/docs/event-object
+             * For more information, see: https://fullcalendar.io/docs/event-object
              * and: https://github.com/fullcalendar/fullcalendar/blob/master/src/core/options.ts
              */
 
             $bookingEvent->setOptions([
-                'backgroundColor' => 'red',
-                'borderColor' => 'red',
+                'backgroundColor' => '#1D8DF6',
+                'borderColor' => '#1D8DF6',
             ]);
             $bookingEvent->addOption(
                 'url',
-                $this->router->generate('app_booking_show', [
+                $this->router->generate('app_booking_edit', [ // Change 'app_booking_new' to your route name
                     'id' => $booking->getId(),
                 ])
             );
 
-            // finally, add the event to the CalendarEvent to fill the calendar
+            // Finally, add the event to the CalendarEvent to fill the calendar
             $calendar->addEvent($bookingEvent);
         }
+
+        // Add your custom event here
+        // $customEvent = new Event(
+        //     'Custom Event',
+        //     new \DateTime('2023-10-31 10:00:00'),
+        //     new \DateTime('2023-10-31 12:00:00')
+        // );
+
+        // $customEvent->setOptions([
+        //     'backgroundColor' => 'blue',
+        //     'borderColor' => 'blue',
+        // ]);
+        // $customEvent->addOption(
+        //     'url',
+        //     $this->router->generate('app_booking', [
+        //         'parameter' => 'value',
+        //     ])
+        // );
+
+        // $calendar->addEvent($customEvent);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

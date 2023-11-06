@@ -15,11 +15,15 @@ class NewBookingType extends AbstractType
         $builder
         ->add('begin_at', DateTimeType::class, [
             'widget' => 'single_text', // Utilisez 'single_text' au lieu de 'singletext'
+            'label' => 'Date de début :',
         ])
         ->add('end_at', DateTimeType::class, [
             'widget' => 'single_text', // Utilisez 'single_text' au lieu de 'singletext'
+            'label' => 'Date de fin :',
         ])
-            ->add('title')
+        ->add('title', null, [
+            'label' => 'Titre :', // Libellé personnalisé pour le champ title
+        ])
         ;
         
     }

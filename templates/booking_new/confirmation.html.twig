@@ -3,18 +3,16 @@
 {% block title %}Hello BookingNewController!{% endblock %}
 
 {% block body %}
-{{ form.vars.value.beginAt }}<br>
-{{ form.vars.value.endAt }}<br>
-{{ form.vars.value.title }}<br>
+{{ newBookingForm.vars.value.begin_at }}
+{{ newBookingForm.vars.value.end_at }}
+{{ newBookingForm.vars.value.title }}
 {% endblock %}
 
 {% block javascript %}
 <script>
-var event = {
-    title: newBooking.title,
-    start: newBooking.beginAt,
-    end: newBooking.endAt
-};
+{{ form.vars.value.begin_at }}
+{{ form.vars.value.end_at }}
+{{ form.vars.value.title }}
 calendar.addEvent(event);
 </script>
 {% endblock %}

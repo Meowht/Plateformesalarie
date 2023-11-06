@@ -1,28 +1,42 @@
+{# templates/booking/new.html.twig #}
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello BookingNewController!{% endblock %}
+{% block title %}Nouvelle Réservation{% endblock %}
 
 {% block body %}
+<div style="text-align: center; margin-top:10%;">
+{% if not app.user %}
+    <p>Vous devez être connecté pour accéder à cette fonctionnalité.</p>
+{% endif %}
+<div style="text-align: center; margin-top:10%;">
+<h1 style="font-size: 60px;"> Ajouter une nouvelle date</h1>
+<div style="text-align: center; margin-top:4%;"></div>
+    {{ form_start(newBookingForm) }}
+{{ form_row(newBookingForm.begin_at) }}
+<div style="margin-bottom: 1%;"></div>
+{{ form_row(newBookingForm.end_at) }}
+<div style="margin-bottom: 1%;"></div>
+{{ form_row(newBookingForm.title) }}
+<div style="margin-bottom: 1%;"></div>
+<button type="submit" class="btn btn-outline-primary" > Créer une date</button>
+{{ form_end(newBookingForm) }}
 
-
-<div class="form-section">
-        {{ form_start(form) }}
-        {{ form_row(form.begin_at) }}
-        {{ form_row(form.end_at) }}
-        {{ form_row(form.title) }}
-        {{ form_end(form) }}
-    </div>
-
-
-
-
-
-<button type="submit" class="btn btn-primary"><a href="{{path('app_booking')}}"  style="text-decoration:none;">Valider</a></button>
 </div>
+{{ form_end(newBookingForm) }}
 
-
-
+    
 {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
 
 {% block javascript %}
 
