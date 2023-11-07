@@ -2,17 +2,25 @@
 
 namespace App\Controller;
 
-use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Booking;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class BookingController extends AbstractController
 {
     #[Route('/booking', name: 'app_booking')]
-    public function index(): Response
+    public function index(Security $security): Response
     {
+        $user = $security->getUser();
+
+        if (!$user) {
+            throw $this->createAccessDeniedException("Vous devez être connecté pour accéder à cette page.");
+        }
+
+
         return $this->render('booking/index.html.twig', [
             'controller_name' => 'BookingController',
         ]);
@@ -26,15 +34,13 @@ class BookingController extends AbstractController
         $this->entityManager = $entityManager;
     }
     public function show($id): Response
-{
-    $booking = $this->entityManager->getRepository(Booking::class)->find($id);
+    {
+        $booking = $this->entityManager->getRepository(Booking::class)->find($id);
 
-    if (!$booking) {
-        throw $this->createNotFoundException('Réservation non trouvée pour l\'ID : ' . $id);
+        if (!$booking) {
+            throw $this->createNotFoundException('Réservation non trouvée pour l\'ID : ' . $id);
+        }
+
+        return $this->render('booking/index.html.twig', ['booking' => $booking]);
     }
-
-    return $this->render('booking/index.html.twig', ['booking' => $booking]);
-}
-
-
 }

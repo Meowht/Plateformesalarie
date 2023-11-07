@@ -1,0 +1,19 @@
+/* Style personnalisé pour les boutons FullCalendar */
+.fc-button-primary {
+    background-color: #d12d2d !important;
+    /* Couleur de fond rouge */
+    color: #fff;
+    /* Texte en blanc */
+    border-color: #a88a8a;
+    /* Bordure rouge */
+}
+
+/* Style personnalisé pour le bouton "Aujourd'hui" */
+.fc-today-button {
+    background-color: #0ea10e !important;
+    /* Couleur de fond verte */
+    color: #fff;
+    /* Texte en blanc */
+    border-color: #6b836b;
+    /* Bordure verte */
+}
