@@ -4,25 +4,46 @@
 {% block title %}Nouvelle Réservation{% endblock %}
 
 {% block body %}
-<div style="text-align: center; margin-top:10%;">
-{% if not app.user %}
-    <p>Vous devez être connecté pour accéder à cette fonctionnalité.</p>
-{% endif %}
+<div style="text-align: center; margin-top:5%;">
+
+
 <div style="text-align: center; margin-top:10%;">
 <h1 style="font-size: 60px;"> Ajouter une nouvelle date</h1>
-<div style="text-align: center; margin-top:4%;"></div>
-    {{ form_start(newBookingForm) }}
-{{ form_row(newBookingForm.begin_at) }}
-<div style="margin-bottom: 1%;"></div>
-{{ form_row(newBookingForm.end_at) }}
-<div style="margin-bottom: 1%;"></div>
-{{ form_row(newBookingForm.title) }}
-<div style="margin-bottom: 1%;"></div>
-<button type="submit" class="btn btn-outline-primary" > Créer une date</button>
-{{ form_end(newBookingForm) }}
+<small>N'oubliez pas que seulement 10 salariés peuvent prendre la ou les même(s) date(s) </small>
+<div style="text-align: center; margin-top:2%;"></div>
+{{ form_start(newBookingForm) }}
+<div class="form-group mb-3">
+    <div class="mb-3">
+        {{ form_label(newBookingForm.begin_at) }}
+        {{ form_widget(newBookingForm.begin_at) }}
+    </div>
+</div>
 
+<div class="form-group mb-3">
+    <div class="mb-3">
+        {{ form_label(newBookingForm.end_at) }}
+        {{ form_widget(newBookingForm.end_at) }}
+    </div>
+</div>
+
+<div class="form-group mb-3">
+    <div class="mb-3">
+        {{ form_label(newBookingForm.title) }}
+        {{ form_widget(newBookingForm.title) }}
+    </div>
+</div>
+
+<div class="form-group mb-3">
+    <button type="submit" class="btn btn-outline-primary">Créer une date</button>
 </div>
 {{ form_end(newBookingForm) }}
+
+
+
+
+
+</div>
+
 
     
 {% endblock %}

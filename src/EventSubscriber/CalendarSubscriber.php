@@ -41,37 +41,51 @@ class CalendarSubscriber implements EventSubscriberInterface
             ->getResult()
         ;
 
+        $uniqueDates = []; // Tableau pour stocker les dates uniques des réservations
+        $eventsAdded = 0; // Compteur pour le nombre d'événements ajoutés
+
         foreach ($bookings as $booking) {
-            // Create the events with your data (here booking data) to fill the calendar
-            $bookingEvent = new Event(
-                $booking->getTitle(),
-                $booking->getBeginAt(),
-                $booking->getEndAt() // If the end date is null or not defined, an all-day event is created.
-            );
+            $dateKey = $booking->getBeginAt()->format('Y-m-d');
 
-            /*
-             * Add custom options to events
-             *
-             * For more information, see: https://fullcalendar.io/docs/event-object
-             * and: https://github.com/fullcalendar/fullcalendar/blob/master/src/core/options.ts
-             */
+            // Vérifiez si la date n'a pas encore été ajoutée au tableau des dates uniques
+            if (!in_array($dateKey, $uniqueDates)) {
+                $uniqueDates[] = $dateKey; // Ajoutez la date au tableau des dates uniques
+                $eventsAdded++;
 
-            $bookingEvent->setOptions([
-                'backgroundColor' => '#1D8DF6',
-                'borderColor' => '#1D8DF6',
-            ]);
-            $bookingEvent->addOption(
-                'url',
-                $this->router->generate('app_booking_edit', [ // Change 'app_booking_new' to your route name
-                    'id' => $booking->getId(),
-                ])
-            );
+                $bookingEvent = new Event(
+                    $booking->getTitle(),
+                    $booking->getBeginAt(),
+                    $booking->getEndAt()
+                );
 
-            // Finally, add the event to the CalendarEvent to fill the calendar
-            $calendar->addEvent($bookingEvent);
+                /*
+                 * Add custom options to events
+                 *
+                 * For more information, see: https://fullcalendar.io/docs/event-object
+                 * and: https://github.com/fullcalendar/fullcalendar/blob/master/src/core/options.ts
+                 */
+
+                $bookingEvent->setOptions([
+                    'backgroundColor' => '#1D8DF6',
+                    'borderColor' => '#1D8DF6',
+                ]);
+                $bookingEvent->addOption(
+                    'url',
+                    $this->router->generate('app_booking_edit', [ // Change 'app_booking_new' to your route name
+                        'id' => $booking->getId(),
+                    ])
+                );
+
+                // Ajoutez l'événement au calendrier
+                $calendar->addEvent($bookingEvent);
+
+                if ($eventsAdded >= 5) {
+                    break; // Limite atteinte pour les événements uniques
+                }
+            }
         }
 
-        // Add your custom event here
+        // Ajoutez vos événements personnalisés ici
         // $customEvent = new Event(
         //     'Custom Event',
         //     new \DateTime('2023-10-31 10:00:00'),
@@ -92,18 +106,3 @@ class CalendarSubscriber implements EventSubscriberInterface
         // $calendar->addEvent($customEvent);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
