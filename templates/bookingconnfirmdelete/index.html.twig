@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BookingConnfirmDeleteController!{% endblock %}
+
+{% block body %}
+<div class="alert alert-dismissible alert-warning">
+  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  <h4 class="alert-heading">Warning!</h4>
+  <p class="mb-0">Voulez-vous vraiment supprimer ce rendez-vous?  </p>
+   <a href="{{path('app_booking_delete', {'id': id})}}" class="alert-link">Oui</a>
+  <p><a href="{{path('app_booking')}}" class="alert-link">Non</a> </p>
+</div>
+
+
+{% endblock %}

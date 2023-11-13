@@ -1,34 +1,67 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Connexion{% endblock %}
 
 {% block body %}
 <form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+   
 
     {% if app.user %}
         <div class="mb-3">
-            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+            Vous êtes connecté en tant que {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
         </div>
     {% endif %}
 <div style="text-align: center; margin-top:15%;">
+
     <h1 class="h3 mb-3 font-weight-normal">Veuillez vous connecter</h1>
     <label for="inputEmail">E-mail :</label>
+    <div style="margin-top: .3%;"></div>
+ {% if error %}
+        <div class="form-group has-danger">
+  <input type="text" value="{{ last_username }}" class="form-control is-invalid" id="inputInvalid" name="email" autocomplete="email" required autofocus style="width:25%;margin:auto;">
+
+  <div class="invalid-feedback">L'email n'existe pas, Veuillez réssayer ou bien vous connectez <a href="{{path('app_register')}}" style="color:#D40017; text-decoration: none;"><strong> ici</strong></a> </div>
+</div>
+
+
+    {% else %}
+
+
+
+
     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus style="width:25%;margin:auto;">
+    
+    {% endif %}
+
+    <div style="margin-top: 1%;"></div>
+
+
     <label for="inputPassword">Mot de passe :</label>
+    <div style="margin-top: .3%;"></div>
+
+
+ {% if error %}
+
+<div class="form-group has-danger">
+ <input type="password"  class="form-control is-invalid" id="inputPassword" style="width:25%;margin:auto;">
+  <div class="invalid-feedback">Le mot de passe est incorrect ou n'existe pas. </div>
+</div>
+
+{% else %}
     <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required style="width:25%;margin:auto;">
+
+{% endif %}
 
     <input type="hidden" name="_csrf_token"
            value="{{ csrf_token('authenticate') }}"
     >
-
+<div style="margin-top: 1%;"></div>
        <button class="btn btn-lg btn-primary" type="submit">
         Connexion
     </button>
+    <div style="margin-top: 1%;"></div>
 </form>
-     <p>Vous n'avez pas de compte ? Cliquez<a href="{{path('app_register')}}" style="text-decoration:none; color:white;"> ici</a> !</p>
-<a href="{{path('app_forgot_password_request') }}">Mot de passe oublié</a>.
+     <p>Vous n'avez pas de compte ? Cliquez<a href="{{path('app_register')}}" style="text-decoration:none;"> ici</a> !</p>
+<a href="{{path('app_forgot_password_request') }}">Mot de passe oublié ?</a>
 </div>
 {% endblock %}

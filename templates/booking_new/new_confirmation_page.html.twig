@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Succès{% endblock %}
+
+{% block body %}
+<div class="container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 50vh;">
+
+    <h1 style=" padding-top: 5%;"> Votre date a bien été enregistrée ! </h1>
+    <br>
+    <h4 ><a href="{{ path('app_booking') }}">Retour</a></h4>
+</div>
+{% endblock %}
+
+{% block javascript %}
+
+{% endblock %}
+

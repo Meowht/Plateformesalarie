@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('assets/js/custom-slider.js') }}"></script>
+	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+	<script>
+		// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ///////////////////////////////////Configuration de la date et l'heure en temps réel  ///////////////////////
+// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+document.addEventListener("DOMContentLoaded", function () {
+var dateSpan = document.getElementById("Aujourdhui");
+var heureSpan = document.getElementById("HeureActuelle");
+
+var currentDate = new Date();
+
+var timeOptions = {
+hour: '2-digit',
+minute: '2-digit'
+};
+
+var formattedTime = currentDate.toLocaleTimeString('fr-FR', timeOptions);
+
+var dateOptions = {
+weekday: 'long',
+year: 'numeric',
+month: 'long',
+day: 'numeric'
+};
+
+var formattedDate = currentDate.toLocaleDateString('fr-FR', dateOptions);
+
+dateSpan.textContent = formattedDate;
+heureSpan.textContent = formattedTime;
+});
+	</script>
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('assets/css/custom-slider.css') }}">
+	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+{% endblock %}
+
+{% block body %}
+	<div
+		class="swiper-container">
+		<!-- Diapositives -->
+		<div
+			class="swiper-wrapper">
+			<!-- Diapositive 1 -->
+			<div class="swiper-slide" style="height:100vh;">
+				<img src="{{ asset('assets/img/Ehpad-La-Roseraie-min-min.jpg') }}" alt="Red Slide" style="height: 100%">
+			</div>
+
+			<!-- Diapositive 2 -->
+			<div class="swiper-slide">
+				<div class="dateDuJour">
+					<h1>Nous sommes le</h1>
+					<h1>
+						<span id="Aujourdhui"></span>
+					</h1>
+					<h1>Il est
+						<span id="HeureActuelle"></span>
+					</h1>
+				</div>
+			</div>
+
+			<!-- Diapositive 3 (Menu du jour) -->
+			<div class="swiper-slide">  
+            <h1 class="menuTitle">Menu du jour</h1>
+				<div class="card-container">
+              
+					<div class="card border-primary mb-3" style="max-width: 20rem;">
+						<div class="card-header">
+							<h1>Menu du midi</h1>
+						</div>
+						<div class="card-body">
+							<h4 class="card-title">Steak Frites</h4>
+							<p class="card-text">Un délicieux steak accompagné de frites croustillantes.</p>
+						</div>
+					</div>
+
+					<div class="card border-primary mb-3" style="max-width: 20rem;">
+						<div class="card-header">
+							<h1>Menu du soir</h1>
+						</div>
+						<div class="card-body">
+							<h4 class="card-title">Steak Frites</h4>
+							<p class="card-text">Un délicieux steak accompagné de frites croustillantes.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<!-- Diapositive 4  -->
+			<div class="swiper-slide"></div>
+
+		</div>
+
+		<!-- Pagination -->
+		<div class="swiper-pagination"></div>
+
+		<!-- Navigation next/prev -->
+		{# <div class="swiper-button-next"></div>
+				        <div class="swiper-button-prev"></div> #}
+	</div>
+{% endblock %}

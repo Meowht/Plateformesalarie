@@ -3,5 +3,21 @@ controllers:
     type: attribute
 app_booking_new:
     path: /booking/new
-    controller: App\Controller\BookingNewController::newBooking
+    controller: App\Controller\BookingNewController::new
     methods: [GET, POST]  # Assurez-vous d'autoriser les méthodes GET et POST si vous utilisez un formulaire pour créer de nouvelles réservations
+
+
+new_confirmation_page:
+    path: /booking-new/confirmation
+    controller: App\Controller\BookingNewController::confirmationPage
+
+app_booking_edit:
+    path: '/booking/edit/{id}'
+    controller: App\Controller\BookingEditController::edit     
+app_booking_show:
+    path: '/booking/show/{id}'
+    controller: App\Controller\BookingController::show
+app_booking_confirm_delete:
+    path: /booking/confirm/delete/{id}
+    controller: App\Controller\BookingConnfirmDeleteController::confirmDelete
+    methods: [GET]

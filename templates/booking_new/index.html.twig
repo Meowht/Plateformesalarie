@@ -1,29 +1,49 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello BookingNewController!{% endblock %}
+{% block title %}Nouvelle Réservation{% endblock %}
 
 {% block body %}
 
+<div style="text-align: center; margin-top: 5%;">
+    <h1 style="font-size: 60px;">Ajouter une nouvelle date</h1>
+    <small>N'oubliez pas que seulement 10 salariés peuvent prendre la ou les même(s) date(s)</small>
+    <div style="text-align: center; margin-top: 2%;"></div>
 
-<div class="form-section">
-        {{ form_start(form) }}
-        {{ form_row(form.begin_at) }}
-        {{ form_row(form.end_at) }}
-        {{ form_row(form.title) }}
-        {{ form_end(form) }}
+    {{ form_start(newBookingForm) }}
+    <div class="form-group mb-3">
+        <div class="mb-3">
+            {{ form_label(newBookingForm.begin_at) }}
+            {{ form_widget(newBookingForm.begin_at) }}
+            {% if form_errors(newBookingForm.begin_at) %}
+                <div class="alert alert-danger">{{ form_errors(newBookingForm.begin_at) }}</div>
+            {% endif %}
+        </div>
     </div>
 
+    <div class="form-group mb-3">
+        <div class="mb-3">
+            {{ form_label(newBookingForm.end_at) }}
+            {{ form_widget(newBookingForm.end_at) }}
+            {% if form_errors(newBookingForm.end_at) %}
+                <div class="alert alert-danger">{{ form_errors(newBookingForm.end_at) }}</div>
+            {% endif %}
+        </div>
+    </div>
 
+    <div class="form-group mb-3">
+        <div class="mb-3">
+            {{ form_label(newBookingForm.title) }}
+            {{ form_widget(newBookingForm.title) }}
+            {% if form_errors(newBookingForm.title) %}
+                <div class="alert alert-danger">{{ form_errors(newBookingForm.title) }}</div>
+            {% endif %}
+        </div>
+    </div>
 
-
-
-<button type="submit" class="btn btn-primary"><a href="{{path('app_booking')}}"  style="text-decoration:none;">Valider</a></button>
+    <div class="form-group mb-3">
+        <button type="submit" class="btn btn-outline-primary">Créer une date</button>
+    </div>
+    
+    {{ form_end(newBookingForm) }}
 </div>
-
-
-
-{% endblock %}
-
-{% block javascript %}
-
 {% endblock %}

@@ -1,26 +1,53 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Créer un compte{% endblock %}
+{% block title %}Créer un compte
+{% endblock %}
 
 {% block body %}
-    {% for flash_error in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-    {% endfor %}
-<div style="text-align: center; margin-top:15%;">
-    <h1>Créer un compte</h1>
+	{% for flash_error in app.flashes('verify_email_error') %}
+		<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+	{% endfor %}
+	<div style="text-align: center; margin-top: 12%;">
+		<h1>Créer un compte</h1>
 
-    {{ form_errors(registrationForm) }}
+		{{ form_errors(registrationForm) }}
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Mot de Passe'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+		{{ form_start(registrationForm) }}
+		<div class="form-group">
+			<div
+				class="col-md-4 mx-auto" style="margin-top: 1%;">
+				<!-- Utilisez col-md-4 pour occuper un tiers de la largeur et mx-auto pour centrer -->
+				{{ form_label(registrationForm.email, null, { 'label_attr': {'style': 'margin-bottom: 5px;'} }) }}
+				{{ form_widget(registrationForm.email, { 'attr': {'class': 'form-control'} }) }}
+			</div>
+		</div>
 
-           <button class="btn btn-lg btn-primary" type="submit">
-        S'inscrire
-    </button>
-    {{ form_end(registrationForm) }}
+		<div class="form-group" style="margin-top: 1%;">
+			<div class="col-md-4 mx-auto">
+				{{ form_label(registrationForm.plainPassword, 'Mot de Passe', { 'label_attr': {'style': 'margin-bottom: 5px;'} }) }}
+				{{ form_widget(registrationForm.plainPassword, { 'attr': {'class': 'form-control'} }) }}
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-md-4 mx-auto" style="margin-top: 1%;">
+				{{ form_widget(registrationForm.agreeTerms, { 'attr': {'class': 'form-check-input'} }) }}
+
+				{{ form_label(registrationForm.agreeTerms, 'J\'accepte les termes et conditions', { 'label_attr': {'style': 'margin-bottom: 5px;'} }) }}
     </div>
-{% endblock %}
+</div>
+
+
+
+
+        
+
+        <button class="btn btn-lg btn-primary" type="submit" style=" margin-top: 1%;">S'inscrire</button>
+        {{ form_end(registrationForm) }}
+			</div>
+		{% endblock %}
+
+		{% block stylesheet %}
+			<style></style>
+
+		{% endblock %}

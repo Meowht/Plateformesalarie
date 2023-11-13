@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Édition de Réservation{% endblock %}
+
+{% block body %}
+<div style="text-align: center; margin-top: 15%; padding-bottom: 10%;">
+    <h2 style="margin-bottom: 1%;">Édition de Réservation</h2>
+    {{ form_start(editBookingForm) }}
+    {{ form_row(editBookingForm.begin_at) }}
+    <div style="margin-bottom: 1%;"></div>
+    {{ form_row(editBookingForm.end_at) }}
+    <div style="margin-bottom: 1%;"></div>
+    {{ form_row(editBookingForm.title) }}
+    <div style="margin-bottom: 1%;"></div>
+   
+  <div style="display: flex; justify-content: center; align-items: center;">
+  <button type="submit" class="btn btn-outline-primary" style="margin-right: 10px;">Sauvegarder</button>
+  {{ form_end(editBookingForm) }}
+  <form action="{{ path('app_booking_confirm_deletee', {'id': booking.id}) }}" method="post">
+    <input type="hidden" name="_method" value="DELETE">
+    <button type="submit" class="btn btn-outline-danger">Supprimer</button>
+  </form>
+
+
+</div>
+</div>
+
+{% endblock %}
+
+
+{% block javascript %}
+
+<script>
+
+</script>
+
+{% endblock %}
