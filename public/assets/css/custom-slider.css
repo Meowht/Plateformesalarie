@@ -2,7 +2,9 @@
 /*//////////////////////////// Slide de la date du jour /////////////////////////////////*/
 /* /////////////////////////////////////////////////////////////////////////////////////////// */
 
-
+.swiper-container{
+overflow: hidden;
+}
 
 
 .dateDuJour {
@@ -30,4 +32,8 @@ margin-bottom: 5%;}
     justify-content: space-around;
     
 
+}
+.contenuMenu{
+
+border: 100%;
 }

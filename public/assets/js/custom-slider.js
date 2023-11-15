@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    var mySwiper = new mySwiper('.swiper-container', {
+    var mySwiper = new Swiper('.swiper-container', {
         loop: true,
         effect: 'slide',
         speed: 800,
