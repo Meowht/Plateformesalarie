@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+	<style>
+		.menusMidiSoir {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.midi,
+		.soir {
+			flex: 1;
+			text-align: center;
+		}
+
+		.bouttonModifier {
+			margin: 20px;
+			display: flex;
+			justify-content: center;
+
+		}
+
+		#alerteSuppression {
+			display: none;
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 50%;
+			z-index: 1000;
+		}
+	</style>
+{% endblock %}
+
+{% block body %}
+
+	<h1 style="text-align: center; margin: 2%;">Modifier un des Menus</h1>
+
+	{{ form_start(form) }}
+
+	<div class="menusMidiSoir">
+		<div class="midi">
+			<div class="card">
+				<div class="card-body">
+					<h4 class="card-title">Menu du midi</h4>
+
+					<p>{{ form_label(form.Entree) }}:</p>
+					<p>{{ form_widget(form.Entree) }}</p>
+
+					<p>{{ form_label(form.Proteine) }}:</p>
+					<p>{{ form_widget(form.Proteine) }}</p>
+
+					<p>{{ form_label(form.Accompagnement) }}:</p>
+					<p>{{ form_widget(form.Accompagnement) }}</p>
+
+					<p>{{ form_label(form.Dessert) }}:</p>
+					<p>{{ form_widget(form.Dessert) }}</p>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="soir">
+			<div class="card">
+				<div class="card-body">
+					<h4 class="card-title">Menu du soir</h4>
+
+					<p>{{ form_label(form.Entree_Soir) }}:</p>
+					<p>{{ form_widget(form.Entree_Soir) }}</p>
+
+					<p>{{ form_label(form.Proteine_Soir) }}:</p>
+					<p>{{ form_widget(form.Proteine_Soir) }}</p>
+
+					<p>{{ form_label(form.Accompagnement_Soir) }}:</p>
+					<p>{{ form_widget(form.Accompagnement_Soir) }}</p>
+
+					<p>{{ form_label(form.Dessert_Soir) }}:</p>
+					<p>{{ form_widget(form.Dessert_Soir) }}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="bouttonModifier">
+		<button type="submit" class="btn btn-secondary">Enregistrer</button>
+		{{ form_end(form) }}
+		{# Formulaire de suppression #}
+		<div class="formulaireSuppression">
+			<form action="{{ path('app_menu_supprimer', {'id': menu.id}) }}" method="post">
+				<input type="hidden" name="_method" value="DELETE">
+				<button type="submit" class="btn btn-danger">Supprimer</button>
+			</form>
+		</div>
+
+
+	</div>
+
+
+{% endblock %}

@@ -21,3 +21,13 @@ app_booking_confirm_delete:
     path: /booking/confirm/delete/{id}
     controller: App\Controller\BookingConnfirmDeleteController::confirmDelete
     methods: [GET]
+
+
+app_menu_success:
+    path: '/menuSucces'
+    controller: 'App\Controller\MenuDuJourController::menuSucces'
+
+app_menu_supprimer:
+    path: '/menu/{id}/supprimer'
+    controller: 'App\Controller\SliderController::supprimerMenu'
+    methods: ['GET', 'POST']

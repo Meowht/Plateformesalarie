@@ -52,13 +52,16 @@
 							</li>
 						{% endif %}
 						<li class="nav-item">
-							<a class="nav-link" href="{{ path('app_booking_new') }}">Demander une date de congé</a>
+							<a class="nav-link" href="{{ path('app_booking_new') }}">Ajouter un évenement</a>
 						</li>
 						<li class="nav-item">
 							<a href="{{path('app_slider')}}" class="nav-link">Slider</a>
 						</li>
-						<li class="nav-item" style="position: absolute">
-							<img src="{{ asset('assets/img/LOGO-blanc-LaRoseraie-vector.svg') }}" alt="">
+							<li class="nav-item">
+							<a href="{{path('app_menu_du_jour')}}" class="nav-link">Ajouter Menu du jour</a>
+						</li>
+						<li class="nav-item">
+							<a href="{{ path('app_slider') }}#sectionMenuJour" class="nav-link">Modifier Menu du jour</a>
 						</li>
 					</ul>
 

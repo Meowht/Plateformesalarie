@@ -2,8 +2,8 @@
 /*//////////////////////////// Slide de la date du jour /////////////////////////////////*/
 /* /////////////////////////////////////////////////////////////////////////////////////////// */
 
-.swiper-container{
-overflow: hidden;
+.swiper-container {
+    overflow: hidden;
 }
 
 
@@ -14,26 +14,101 @@ overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
     /* border: solid red; */
 }
+
 
 
 /* /////////////////////////////////////////////////////////////////////////////////////////// */
 /*//////////////////////////// Slide de la card du menu dujour /////////////////////////////////*/
 /* /////////////////////////////////////////////////////////////////////////////////////////// */
 
-.menuTitle{
-text-align: center;
-margin-top: 5%;
-margin-bottom: 5%;}
-.card-container {
+
+.menuTitle {
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 3%;
+}
+
+.contenuMenu {
+
+
     display: flex;
-    justify-content: space-around;
-    
+    overflow-x: auto;
 
 }
-.contenuMenu{
 
-border: 100%;
+.mb-3 {
+    width: 25% ;
+
 }
+
+.menuMidi {
+    color: #326495;
+    text-align: center;
+    margin-bottom: 2%;
+}
+/*////////////////////////////  Animation voiture /////////////////////////////////*/
+
+
+.animationContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.textEtImage {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+}
+
+.road {
+  position: relative;
+  width: 50%; /* Ajustez la largeur de la route selon vos besoins */
+}
+
+.road-image {
+  width: 100%;
+}
+
+.car {
+  position: absolute;
+  top: 10px;
+  left: 15%;
+  width: 20px;
+  height: auto;
+  animation: moveAndRotate 4s forwards;
+}
+
+@keyframes moveAndRotate {
+  0% {
+    transform: rotate(90deg) translateX(0);
+  }
+
+  50% {
+    transform: rotate(90deg) translateX(10vw);
+  }
+
+  100% {
+    transform: rotate(0deg) translateX(5.5vw) translateY(25vh);
+  }
+}
+
+.textArrivee {
+  width: 40%; /* Ajustez la largeur du texte selon vos besoins */
+}
+
+.arrivee {
+  font-size: 2em;
+}
+
+
+
+
+
+

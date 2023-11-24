@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formulaire du Menu
+{% endblock %}
+
+{% block body %}
+
+	<style>
+	.contenuDesMenus {
+    display: flex;
+    justify-content: space-between;
+}
+.card {
+    width: 48%; /* Ajustez la largeur selon vos besoins */
+}
+
+.createMenuButton{
+margin-top:2%;
+text-align:center;
+}
+
+	</style>
+<h1 style="text-align: center; margin-top:2%; margin-bottom:2%;">Ajouter un nouveau menu</h1>
+<div class="contenuDesMenus">
+	
+	<div class="card" >
+		<div class="card-body">
+			<h4 class="card-title">Menu du midi</h4>
+			{{ form_start(newMenuForm) }}
+
+
+			<p class="card-text">
+				{{ form_label(newMenuForm.Entree) }} : 
+				{{ form_widget(newMenuForm.Entree) }}</p>
+			<p class="card-text">
+				{{ form_label(newMenuForm.Proteine) }} : 
+				{{ form_widget(newMenuForm.Proteine) }}</p>
+			<p class="card-text">
+				{{ form_label(newMenuForm.Accompagnement) }} : 
+				{{ form_widget(newMenuForm.Accompagnement) }}</p>
+			<p class="card-text">
+				{{ form_label(newMenuForm.Dessert) }} : 
+				{{ form_widget(newMenuForm.Dessert) }}</p>
+
+		</div>
+	</div>
+
+
+	<div class="card">
+		<div class="card-body">
+			<h4 class="card-title">Menu du soir</h4>
+
+			<p class="card-text">
+				{{ form_label(newMenuForm.Entree_Soir) }} : 
+				{{ form_widget(newMenuForm.Entree_Soir) }}</p>
+			<p class="card-text">
+				{{ form_label(newMenuForm.Proteine_Soir) }} : 
+				{{ form_widget(newMenuForm.Proteine_Soir) }}
+			</p>
+			<p class="card-text">
+				{{ form_label(newMenuForm.Accompagnement_Soir) }} : 
+				{{ form_widget(newMenuForm.Accompagnement_Soir) }}
+			</p>
+			<p class="card-text">
+				{{ form_label(newMenuForm.Dessert_Soir) }} : 
+				{{ form_widget(newMenuForm.Dessert_Soir) }}
+			</p>
+
+		</div>
+	</div>
+
+</div>
+	<div class="createMenuButton">
+		<button type="submit" class="btn btn-success">Créer</button>
+
+		{{ form_end(newMenuForm) }}
+	</div>
+
+{% endblock %}
