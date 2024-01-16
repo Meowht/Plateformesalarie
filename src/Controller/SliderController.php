@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\UploadImage;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -10,6 +11,10 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 use App\Entity\MenuDuJour;
 use App\Form\MenuDuJourType;
+use App\Entity\Arrivee;
+use App\Entity\Depart;
+use App\Form\ArriveeType;
+use App\Controller\UploadImageController;
 class SliderController extends AbstractController
 {
     private $entityManager;
@@ -20,7 +25,7 @@ class SliderController extends AbstractController
     }
 
     #[Route('/slider', name: 'app_slider')]
-    public function index(Request $request, Security $security): Response
+    public function index(Request $request, Security $security, $imageFileName = null,): Response
     {
         $user = $security->getUser();
 
@@ -32,11 +37,20 @@ class SliderController extends AbstractController
         $menuRepository = $this->entityManager->getRepository(MenuDuJour::class);
         $menus = $menuRepository->findAll();
 
+        $arrivees = $this->entityManager->getRepository(Arrivee::class)->findAll();
+        $Departs = $this->entityManager->getRepository(Depart::class)->findAll();
+        $imageFileName = $request->query->get('imageFileName');
+
         // Rendre la vue avec les données récupérées
         return $this->render('slider/index.html.twig', [
             'menus' => $menus,
+            'arrivees' => $arrivees,
+            'Departs' => $Departs,
+            'imageFileName' => $imageFileName,
         ]);
     }
+
+
 
 
 // MODIFICATION MENU 

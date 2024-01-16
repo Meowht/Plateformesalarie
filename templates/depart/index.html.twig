@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une arrivée{% endblock %}
+
+
+
+{% block body %}
+    <div class="containerArriveeFormulaire">
+        {{ form_start(form) }}
+
+        {# S'il y moins de 3 carctères d'envoyés dans le formulaire, j'ai créer un style d'erreur qui s'affiche dans l'input et en dessous #}
+        {% if form.Nom.vars.value is empty %}
+            <div class="mb-3">
+                {{ form_label(form.Nom, 'Nom : ', {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(form.Nom, {'attr': {'class': 'form-control'}}) }}
+                {% if form_errors(form.Nom) %}
+                    {{ form_errors(form.Nom) }}
+                {% endif %}
+            </div>
+        {% elseif form.Nom.vars.value|length < 3 %}
+            <div class="mb-3">
+                {{ form_label(form.Nom, 'Nom : ', {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(form.Nom, {'attr': {'class': 'form-control is-invalid'}}) }}
+                {% if form_errors(form.Nom) %}
+                    <div class="invalid-feedback">
+                        {{ form_errors(form.Nom) }}
+                    </div>
+                {% endif %}
+            </div>
+        {# S'il y a plus de 3 carctères d'envoyés dans mon formulaire, alors les données sont envoyées et aucune erreurs ne s'affichera #}
+        {% else %}
+            <div class="mb-3">
+                {{ form_label(form.Nom, 'Nom : ', {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(form.Nom, {'attr': {'class': 'form-control', 'placeholder': 'Choisissez un nom'}}) }}
+                {{ form_errors(form.Nom) }}
+            </div>
+        {% endif %}
+
+        {# La même condition est établie pour la donnée Prenom  #}
+      {% if form.Prenom.vars.value is empty %}
+            <div class="mb-3">
+                {{ form_label(form.Prenom, 'Prénom : ', {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(form.Prenom, {'attr': {'class': 'form-control'}}) }}
+                {% if form_errors(form.Prenom) %}
+                    {{ form_errors(form.Prenom) }}
+                {% endif %}
+            </div>
+        {% elseif form.Prenom.vars.value|length < 3 %}
+            <div class="mb-3">
+                {{ form_label(form.Prenom, 'Prénom : ', {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(form.Prenom, {'attr': {'class': 'form-control is-invalid'}}) }}
+                {% if form_errors(form.Prenom) %}
+                    <div class="invalid-feedback">
+                        {{ form_errors(form.Prenom) }}
+                    </div>
+                {% endif %}
+            </div>
+        {# S'il y a plus de 3 carctères d'envoyés dans mon formulaire, alors les données sont envoyées et aucune erreurs ne s'affichera #}
+        {% else %}
+            <div class="mb-3">
+                {{ form_label(form.Prenom, 'Prenom : ', {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(form.Prenom, {'attr': {'class': 'form-control', 'placeholder': 'Choisissez un nom'}}) }}
+                {{ form_errors(form.Prenom) }}
+            </div>
+        {% endif %}
+
+        {# Ici, je n'ai pas mis de condition d'erreurs parce que j'ai créé un input de type choice avec plusieurs choix prédéfinis, et le choix ne peut être qu'unique donc aucune raison de mettre une erreur #}
+        <div class="mb-3">
+            {{ form_label(form.profession, 'Profession : ', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.profession, {'attr': {'class': 'form-select', 'id': 'Select'}}) }}
+            {{ form_errors(form.profession) }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+        <a href="{{ path('app_slider') }}#departFullPage" class="btn btn-secondary">Retour</a>
+
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

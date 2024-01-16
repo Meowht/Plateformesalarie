@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier l'arrivée{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        .containerArriveeFormulaire {
+            text-align: center;
+            width: 30%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 3%;
+        }
+
+
+
+ .ajustementButtonForArrivee{
+width: 75%;
+margin:auto;
+display: flex;
+justify-content: center;
+justify-content: space-around;
+}
+    
+    </style>
+{% endblock %}
+
+
+{% block body %}
+
+    <div class="card bg-light mb-3" style="max-width: 30rem; margin: auto; ">
+        <div class="card-body">
+            <h4 class="card-title">Modifier</h4>
+
+            {# Formulaire de modification #}
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <p class="card-text">
+			<div class="ajustementButtonForArrivee">
+                <button type="submit" class="btn btn-primary">Enregistrer</button>
+            </p>
+            {{ form_end(form) }}
+
+            {# Formulaire de suppression #}
+            <form method="post" action="{{ path('app_arrivee_supprimer', {'id': arrivee.getId()}) }}" onsubmit="return confirm('Voulez-vous vraiment retirer cet élément ?');">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit" class="btn btn-danger">Supprimer</button>
+            </form></div>
+        </div>
+    </div>
+
+{% endblock %}

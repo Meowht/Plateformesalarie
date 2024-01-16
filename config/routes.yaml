@@ -31,3 +31,18 @@ app_menu_supprimer:
     path: '/menu/{id}/supprimer'
     controller: 'App\Controller\SliderController::supprimerMenu'
     methods: ['GET', 'POST']
+
+app_arrivee_ajouter:
+    path: '/arrivee/ajouter'
+    controller: 'App\Controller\ArriveeController::addArrivee'
+    methods: ['GET', 'POST']
+
+app_depart-ajouter:
+    path: '/depart'
+    controller: 'App\Controller\DepartController::addDepart'
+    methods: ['GET', 'POST']
+
+app_Depart_supprimer:
+    path: '/Depart/{id}/supprimer'
+    controller: 'App\Controller\DepartController::suppressionDepart'
+    methods: ['GET', 'POST']

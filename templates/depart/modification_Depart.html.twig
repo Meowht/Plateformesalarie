@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier le départ{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        .containerDepartFormulaire {
+            text-align: center;
+            width: 30%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 3%;
+        }
+
+        .ajustementButtonForDepart {
+            width: 75%;
+            margin: auto;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        /* Ajoutez un style spécifique pour les boutons de suppression */
+        .btn-supprimer {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+
+        /* Ajoutez un style spécifique pour la marge du bas */
+        .bottom-margin {
+            margin-bottom: 10px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="card bg-light mb-3 containerDepartFormulaire">
+        <div class="card-body">
+            <h4 class="card-title">Modifier</h4>
+
+            {# Formulaire de modification #}
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <p class="card-text"><div class="ajustementButtonForDepart">
+                <button type="submit" class="btn btn-primary">Enregistrer</button>
+            </p>
+            {{ form_end(form) }}
+
+            {# Formulaire de suppression #}
+            <form method="post" action="{{ path('app_Depart_supprimer', {'id': Depart.getId()}) }}" onsubmit="return confirm('Voulez-vous vraiment retirer cet élément ?');">
+                <input type="hidden" name="_method" value="DELETE">
+                <p class="card-text ajustementButtonForDepart bottom-margin">
+                    <button type="submit" class="btn btn-danger btn-supprimer">Supprimer</button>
+                </p>
+            </form></div>
+        </div>
+    </div>
+{% endblock %}
