@@ -1,6 +1,11 @@
 controllers:
     resource: ../src/Controller/
     type: attribute
+app_home:
+    path: /
+    controller: App\Controller\HomeController::index
+    methods: [GET]
+
 app_booking_new:
     path: /booking/new
     controller: App\Controller\BookingNewController::new

@@ -1,81 +1,64 @@
+
+
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('assets/js/custom-slider.js') }}"></script>
+	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+var dateSpan = document.getElementById("Aujourdhui");
+var heureSpan = document.getElementById("HeureActuelle");
+
+function updateDateTime() {
+var currentDate = new Date();
+
+var timeOptions = {
+hour: '2-digit',
+minute: '2-digit'
+};
+
+var formattedTime = currentDate.toLocaleTimeString('fr-FR', timeOptions);
+
+var dateOptions = {
+weekday: 'long',
+year: 'numeric',
+month: 'long',
+day: 'numeric'
+};
+
+var formattedDate = currentDate.toLocaleDateString('fr-FR', dateOptions);
+
+dateSpan.textContent = formattedDate;
+heureSpan.textContent = formattedTime;
+}
+
+// Mise à jour initiale
+updateDateTime();
+
+// Mise à jour toutes les 60 secondes (ajustez l'intervalle selon vos besoins)
+setInterval(updateDateTime, 60000);
+});
+
+
+
+
+
+
+
+
+	</script>
+	<!-- Ajouter le widget météo -->
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+	<link rel="stylesheet" href="{{ asset('assets/css/custom-slider.css') }}">
+{% endblock %}
 
 {% block body %}
-<style>
-    {# body{
-        background-image:url("asset('assets/img/red-thread-5548304_1280.jpg')")
-    } #}
-    * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-</style>
 
-<div class="example-wrapper" style="text-align: center; margin-top:15%;">
-    <h1 >Bienvenue sur notre plateforme</h1>
-
-    <p>Ici vous pourrez prendre vos congés sur les dates que vous aurez choisie. Pour y aller, allez dans l'onglet "Demander une date de congé"</p>
-    <ul style="list-style-type: none;">
-        <li>Seul 10 salariés peuvent prendre la ou les même(s) date</li>
-        <li>N'oubliez pas que vous ne pourrez avoir que 5 semaines de congés par an</li>
-    </ul>
-
-    <div class="d-grid gap-2" style="width: 30%; margin: auto;">
-        {% if app.user %}
-            <button class="btn btn-lg btn-primary" type="button">
-                <a href="{{ path('app_booking') }}" style="text-decoration: none; color: white;">Accéder au calendrier</a>
-            </button>
-        {% else %}
-            <div class="alert alert-dismissible alert-danger">
-                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                Vous devez être connecté pour accéder au calendrier !
-                <br>
-                <a href="{{ path('app_login') }}" class="alert-link" style="text-decoration:none;">Me connecter</a>
-            </div>
-            
-        {% endif %}
-    </div>
- 
-</div>
-
-</div>
-
-
-</div>
-{# <div class="example-wrapper" style="text-align: center; margin-top:15%; ">
-<span class="badge bg-primary">Primary</span>
-<span class="badge bg-secondary">Secondary</span>
-<span class="badge bg-success">Success</span>
-<span class="badge bg-danger">Danger</span>
-<span class="badge bg-warning">Warning</span>
-<span class="badge bg-info">Info</span>
-<span class="badge bg-light">Light</span>
-<span class="badge bg-dark">Dark</span>
-<span class="badge bg-primary">Primary</span>
-<span class="badge bg-secondary">Secondary</span>
-<span class="badge bg-success">Success</span>
-<span class="badge bg-danger">Danger</span>
-<span class="badge bg-warning">Warning</span>
-<span class="badge bg-info">Info</span>
-<span class="badge bg-light">Light</span>
-<span class="badge bg-dark">Dark</span>
-<span class="badge bg-primary">Primary</span>
-<span class="badge bg-secondary">Secondary</span>
-<span class="badge bg-success">Success</span>
-<span class="badge bg-danger">Danger</span>
-<span class="badge bg-warning">Warning</span>
-<span class="badge bg-info">Info</span>
-<span class="badge bg-light">Light</span>
-<span class="badge bg-dark">Dark</span>
-<span class="badge bg-primary">Primary</span>
-<span class="badge bg-secondary">Secondary</span>
-<span class="badge bg-success">Success</span>
-<span class="badge bg-danger">Danger</span>
-<span class="badge bg-warning">Warning</span>
-<span class="badge bg-info">Info</span>
-
-</div> #}
 {% endblock %}

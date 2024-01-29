@@ -70,7 +70,7 @@ class ArriveeController extends AbstractController
             $this->entityManager->flush();
     
             // Redirigez vers la page principale ou une autre page appropriée
-            return $this->redirectToRoute('app_slider');
+            return $this->redirectToRoute('app_home');
       
       
       
@@ -103,7 +103,7 @@ public function suppressionArrivee(Request $request, int $id): Response
         $this->entityManager->flush();
 
         // Redirigez vers la page principale ou une autre page appropriée
-        return $this->redirectToRoute('app_slider');
+        return $this->redirectToRoute('app_home');
     }
 
     // Rendre la vue avec le formulaire de suppression (facultatif)

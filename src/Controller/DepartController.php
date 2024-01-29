@@ -14,7 +14,7 @@ class DepartController extends AbstractController
 {
     #[Route('/depart', name: 'app_depart-ajouter')]
 
-
+    private $entityManager;
     public function __construct(EntityManagerInterface $entityManager)
     {
         $this->entityManager = $entityManager;
@@ -71,7 +71,7 @@ class DepartController extends AbstractController
             $this->entityManager->flush();
     
             // Redirigez vers la page principale ou une autre page appropriée
-            return $this->redirectToRoute('app_slider');
+            return $this->redirectToRoute('app_home');
       
       
       
@@ -106,7 +106,7 @@ public function suppressionDepart(Request $request, int $id): Response
         $this->entityManager->flush();
 
         // Redirect to the main page or another appropriate page
-        return $this->redirectToRoute('app_slider');
+        return $this->redirectToRoute('app_home');
     }
 
     // Render the view with the delete form (if needed)

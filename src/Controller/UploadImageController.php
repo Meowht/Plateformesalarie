@@ -41,7 +41,7 @@ class UploadImageController extends AbstractController
                     $imageFileName = $newFilename;
 
                     // Rediriger vers la page du slider avec le nom du fichier comme paramètre
-                    return $this->redirectToRoute('app_slider', ['imageFileName' => $imageFileName]);
+                    return $this->redirectToRoute('app_home', ['imageFileName' => $imageFileName]);
                 } catch (FileException $e) {
                     // Gestion des erreurs en cas d'échec du téléchargement du fichier
                     $this->addFlash('error', 'Une erreur s\'est produite lors du téléchargement de l\'image.');

@@ -40,25 +40,9 @@
 								<span class="visually-hidden">(current)</span>
 							</a>
 						</li>
-						{% if app.user %}
-							<li class="nav-item">
-								<a class="nav-link" href="{{path('app_logout')}}">
-									Deconnexion</a>
-							</li>
-						{% else %}
-							<li class="nav-item">
-								<a class="nav-link" href="{{path('app_login')}}">
-									Connexion</a>
-							</li>
-						{% endif %}
+						
 						<li class="nav-item">
-							<a class="nav-link" href="{{ path('app_booking_new') }}">Ajouter un évenement</a>
-						</li>
-						<li class="nav-item">
-							<a href="{{path('app_slider')}}" class="nav-link">Slider</a>
-						</li>
-						<li class="nav-item">
-							<a href="{{ path('app_slider') }}#sectionMenuJour" class="nav-link">Modifier Menu du jour</a>
+							<a href="{{path('app_booking')}}" class="nav-link">Calendrier</a>
 						</li>
 						<li class="nav-item">
 						<a href="{{ path('app_arrivee_ajouter')}}" class="nav-link">Ajouter arrivées</a>
@@ -69,6 +53,17 @@
 
 					<li class="nav-item">
 					<a href="{{ path('app_upload_image') }}" class="nav-link">Ajouter une image</a></li>
+					{% if app.user %}
+							<li class="nav-item">
+								<a class="nav-link" href="{{path('app_logout')}}">
+									Deconnexion</a>
+							</li>
+						{% else %}
+							<li class="nav-item">
+								<a class="nav-link" href="{{path('app_login')}}">
+									Connexion</a>
+							</li>
+						{% endif %}
 					</ul>
 					
 				</div>
